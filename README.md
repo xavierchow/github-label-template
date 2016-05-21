@@ -1,6 +1,7 @@
 Github Label Template
 ------------------------
 [![Build Status](https://travis-ci.org/xavierchow/github-label-template.svg?branch=master)](https://travis-ci.org/xavierchow/github-label-template)
+[![npm](http://img.shields.io/npm/v/github-label-template.svg?maxAge=2592000)](https://www.npmjs.org/package/github-label-template)
 
 ## Intro
 
