@@ -1,5 +1,6 @@
 Github Label Template
 ------------------------
+[![Build Status](https://travis-ci.org/xavierchow/github-label-template.svg?branch=master)](https://travis-ci.org/xavierchow/github-label-template)
 
 ## Intro
 
