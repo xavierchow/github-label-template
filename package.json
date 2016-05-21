@@ -1,0 +1,37 @@
+{
+  "name": "github-label-template",
+  "version": "0.0.1",
+  "description": "manage github lable automatically",
+  "main": "index.js",
+  "bin": {
+    "ghlbl": "./index.js" 
+  },
+  "scripts": {
+    "pretest": "jshint lib index.js",
+    "test": "mocha test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xavierchow/github-label-template.git"
+  },
+  "keywords": [
+    "github"
+  ],
+  "author": "xavierchow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xavierchow/github-label-template/issues"
+  },
+  "homepage": "https://github.com/xavierchow/github-label-template#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "debug": "^2.2.0",
+    "request-promise": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "nock": "^8.0.0"
+  }
+}
