@@ -35,7 +35,7 @@ const main = () => {
   const lbl = new Label(program.owner, program.repo, program.token);
 
   if (program.export) {
-    const exportedFile = path.resolve(program.export); //FIXME relative path?
+    const exportedFile = path.resolve(program.export);
     return lbl.getAll()
       .then(labels => {
         fs.writeFileSync(exportedFile, JSON.stringify(labels, null, 2));
@@ -56,6 +56,10 @@ const main = () => {
         console.log('All labels created.');
       });
   }
+  program.help((txt) => {
+    console.error('No action specified!');
+    return txt;
+  });
 };
 main();
 

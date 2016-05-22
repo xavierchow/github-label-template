@@ -36,6 +36,17 @@ Node.js 4.4 or later.
 
 
 ```
+### Samples
+
+* Export all labels
+  * `ghlbl -o xavierchow -r github-label-template -t <github-token> -e out.json`
+
+
+* Clear all existed lables
+  * `ghlbl -o xavierchow -r github-label-template -t <github-token> -d`
+
+* Import lables from json template
+  * `ghlbl -o xavierchow -r github-label-template -t <github-token> -i tmpl.json`
 
 
 ## License
