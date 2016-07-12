@@ -12,6 +12,10 @@ when you create a new repository, you might want to use the template you favor, 
 
 No... This command line tool tries to help you manuplate your github label template effectively.
 
+## Recommended template
+Feel free to export the lables of this [repo](https://github.com/xavierchow/github-label-template/labels) as a template.
+![](/assets/template.png)
+
 ## Prerequisite
 Node.js 4.4 or later.
 
