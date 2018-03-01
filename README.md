@@ -5,12 +5,12 @@ Github Label Template
 
 ## Intro
 
-Will you be satisfied and stuck with the default labels in the github repository?
-The answer may probably be NO, you always need to add some labels, customize the colors, etc.
-Finally you will come to an awesome label template(or you might find someone from others),
-when you create a new repository, you might want to use the template you favor, but still manually?
 
-No... This command line tool tries to help you manuplate your github label template effectively.
+Will you be satisfied and stuck with the default labels in the GitHub repository?
+The answer may probably be NO; you always need to add some new ones, customize the colors, etc. 
+Finally, you will come to an excellent label template(or you might find someone from others), whenever you create a new repository, you might want to reuse the labels your favor, but still with copying manually?
+
+No... This command line tool tries to help you manipulate your GitHub label template efficiently.
 
 ## Recommended template
 Feel free to export the lables of this [repo](https://github.com/xavierchow/github-label-template/labels) as a template.
@@ -46,10 +46,10 @@ Node.js 4.4 or later.
   * `ghlbl -o xavierchow -r github-label-template -t <github-token> -e out.json`
 
 
-* Clear all existed lables
+* Clear all existed labels
   * `ghlbl -o xavierchow -r github-label-template -t <github-token> -d`
 
-* Import lables from json template
+* Import labels from json template
   * `ghlbl -o xavierchow -r github-label-template -t <github-token> -i tmpl.json`
 
 
