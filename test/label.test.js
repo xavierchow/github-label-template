@@ -18,22 +18,31 @@ describe('Label class', () => {
       .reply(200, [
             {
               url: 'http://xxx.xxx',
-              name: 'foo',
-              color: '523526' 
+              color: '523526',
+              description: 'This is foo.',
+              name: 'foo'
             },
             {
               url: 'http://xxx.xxx',
-              name: 'bar',
-              color: 'f23266' 
+              color: 'f23266',
+              description: null,
+              name: 'bar'
             }
           ]);
     const lbl = new Label('lorem', 'ipsum', 'dolor');
     return lbl.getAll()
       .then((labels) => {
-        expect(labels).to.be.an('array');
-        expect(labels.length).to.be.equal(2);
-        expect(labels[0].name).to.be.equal('foo');
-        expect(labels[1].name).to.be.equal('bar');
+        expect(labels).to.deep.equal([
+          {
+            color: '523526',
+            description: 'This is foo.',
+            name: 'foo'
+          },
+          {
+            color: 'f23266',
+            name: 'bar'
+          }
+        ]);
       });
   });
 
@@ -60,8 +69,15 @@ describe('Label class', () => {
     //mock getAll
     lbl.getAll = () => {
       return Promise.resolve([
-          { name: 'ipsum', color: '252562' },
-          { name: 'lorem', color: '15f567' },
+          {
+            color: '252562',
+            description: 'This is ipsum',
+            name: 'ipsum'
+          },
+          {
+            color: '15f567',
+            name: 'lorem'
+          },
       ]);
     };
     lbl.remove = (labelName) => {
@@ -84,6 +100,23 @@ describe('Label class', () => {
       });
     const lbl = new Label('lorem', 'ipsum', 'dolor');
     lbl.create({ name: 'foobar', color: '235266' });
+  });
+
+  it('create should succeed, with label description', () => {
+    nock('https://api.github.com')
+      .post('/repos/lorem/ipsum/labels', {
+        color: '235266',
+        description: 'foobar description',
+        name: 'foobar'
+      })
+      .reply(201, {
+        color: '235266',
+        description: 'foobar description',
+        url: 'https://api.github.com/repos/lorem/ipsum/labels/foobar',
+        name: 'foobar'
+      });
+    const lbl = new Label('lorem', 'ipsum', 'dolor');
+    lbl.create({ color: '235266', description: 'foobar description', name: 'foobar' });
   });
 
   it('createAll should succeed', () => {
