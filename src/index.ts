@@ -2,11 +2,13 @@
 
 'use strict';
 
-const program = require('commander');
-const fs = require('fs');
-const path = require('path');
-const Label = require('./lib/label');
-const debug = require('debug')('gh-label-tmpl:index');
+import * as  program from 'commander';
+import * as fs from 'fs';
+import * as path from 'path';
+import Debug from 'debug'
+const debug = Debug('gh-label-tmpl:index');
+
+import {Label } from './lib/label';
 
 program
   .version('0.0.1')
@@ -19,38 +21,40 @@ program
   //.option('-c, --config [config file]', 'use config file', 'config.json') //TODO or get git info?
   .parse(process.argv);
 
-if (!program.owner) {
+if (!program.opts().owner) {
   program.help((txt) => {
     console.error('should specify repo onwer!');
     return txt;
   });
 }
-if (!program.repo) {
+if (!program.opts().repo) {
   program.help((txt) => {
     console.error('should specify repo name!');
     return txt;
   });
 }
-const main = () => {
-  const lbl = new Label(program.owner, program.repo, program.token);
+const options = program.opts();
 
-  if (program.export) {
-    const exportedFile = path.resolve(program.export);
+const main = () => {
+  const lbl = new Label(options.owner, options.repo, options.token);
+
+  if (options.export) {
+    const exportedFile = path.resolve(options.export);
     return lbl.getAll()
       .then(labels => {
         fs.writeFileSync(exportedFile, JSON.stringify(labels, null, 2));
         console.log(`All labels exported to ${exportedFile}`);
       });
   }
-  if (program.del) {
+  if (program.opts().del) {
     return lbl.removeAll()
       .then(() => {
         console.log('All labels removed.');
       });
   }
-  if (program.import) {
-    debug('abs file path: %s', path.resolve(program.import));
-    const labels = require(path.resolve(program.import));
+  if (options.import) {
+    debug('abs file path: %s', path.resolve(options.import));
+    const labels = require(path.resolve(options.import));
     return lbl.createAll(labels)
       .then(() => {
         console.log('All labels created.');
