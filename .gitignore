@@ -34,3 +34,8 @@ node_modules
 
 *.swo
 *.swp
+
+# Source
+dist
+
+.nyc_output
